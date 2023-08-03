@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Page with Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        .form-container {
+            display: none;
+        }
+
+        .form-container.show {
+            display: block;
+        }
+
+        label, select, input[type="submit"] {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .dependent-dropdown {
+            display: none;
+        }
+
+        .department-computer-science, .department-humanities, .department-economics, .department-art-literature, .department-commerce {
+            display: none;
+        }
+
+        .department-computer-science.show, .department-humanities.show, .department-economics.show, .department-art-literature.show, .department-commerce.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <button id="showFormBtn">Show Form</button>
+
+    <div class="form-container" id="formContainer">
+        <form>
+            <label for="name">Name</label>
+            <input type="text" id="name" required>
+
+            <label for="dob">DOB</label>
+            <input type="date" id="dob" required>
+
+            <label for="age">Age</label>
+            <input type="number" id="age" required>
+
+            <label for="gender">Gender</label>
+            <select id="gender" required>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" required>
+
+            <label for="email">Mail ID</label>
+            <input type="email" id="email" required>
+
+            <label for="address">Address</label>
+            <textarea id="address" required></textarea>
+
+            <label for="department">Department</label>
+            <select id="department" required>
+                <option value="computer-science">Computer Science</option>
+                <option value="humanities">Humanities</option>
+                <option value="economics">Economics</option>
+                <option value="art-literature">Art & Literature</option>
+                <option value="commerce">Commerce</option>
+            </select>
+
+            <div class="dependent-dropdown department-computer-science">
+                <label for="computer-science-courses">Courses</label>
+                <select id="computer-science-courses">
+                    <option value="web-development">Web Development</option>
+                    <option value="networking">Networking</option>
+                </select>
+            </div>
+
+            <div class="dependent-dropdown department-humanities">
+                <label for="humanities-courses">Courses</label>
+                <select id="humanities-courses">
+                    <option value="history">History</option>
+                    <option value="linguistics">Linguistics</option>
+                </select>
+            </div>
+
+            <div class="dependent-dropdown department-economics">
+                <label for="economics-courses">Courses</label>
+                <select id="economics-courses">
+                    <option value="international-trade">International Trade</option>
+                    <option value="statistics">Statistics</option>
+                </select>
+            </div>
+
+            <div class="dependent-dropdown department-art-literature">
+                <label for="art-literature-courses">Courses</label>
+                <select id="art-literature-courses">
+                    <option value="modern-literature">Modern Literature</option>
+                    <option value="arts-of-radio-tv">Arts of Radio & TV</option>
+                </select>
+            </div>
+
+            <div class="dependent-dropdown department-commerce">
+                <label for="commerce-courses">Courses</label>
+                <select id="commerce-courses">
+                    <option value="accounting">Accounting</option>
+                    <option value="banking">Banking</option>
+                </select>
+            </div>
+
+            <label for="purpose">Purpose</label>
+            <select id="purpose" required>
+                <option value="enquiry">For Enquiry</option>
+                <option value="order">Place Order</option>
+                <option value="return">Return</option>
+            </select>
+
+            <label>Materials Provide</label>
+            <input type="checkbox" id="debit-notebook" name="materials" value="debit-notebook">
+            <label for="debit-notebook">Debit Note Book</label>
+
+            <input type="checkbox" id="pen" name="materials" value="pen">
+            <label for="pen">Pen</label>
+
+            <input type="checkbox" id="exam-papers" name="materials" value="exam-papers">
+            <label for="exam-papers">Exam Papers</label>
+
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <div id="confirmationMessage" style="display: none;">
+        <p>Order Confirmed</p>
+        <a href="/">Return to Home Page</a>
+    </div>
+
+    <script>
+        const showFormBtn = document.getElementById("showFormBtn");
+        const formContainer = document.getElementById("formContainer");
+        const confirmationMessage = document.getElementById("confirmationMessage");
+
+        showFormBtn.addEventListener("click", () => {
+            showFormBtn.style.display = "none";
+            formContainer.classList.add("show");
+        });
+
+        formContainer.addEventListener("submit", (e) => {
+            e.preventDefault();
+            formContainer.style.display = "none";
+            confirmationMessage.style.display = "block";
+        });
+    </script>
+</body>
+</html>
+
